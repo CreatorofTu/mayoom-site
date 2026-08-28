@@ -54,6 +54,15 @@ h1 {
   white-space: nowrap;
 }
 
+.tagline {
+  margin: 1.5rem 0 0;
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.tagline strong { font-weight: 600; }
+
 .scroll-cue {
   position: absolute;
   bottom: max(2rem, env(safe-area-inset-bottom));
@@ -133,6 +142,11 @@ h2 {
   h1 {
     font-size: clamp(2.4rem, 11vw, 4rem);
     white-space: normal;
+  }
+
+  .tagline {
+    max-width: 21rem;
+    margin-inline: auto;
   }
 }
 

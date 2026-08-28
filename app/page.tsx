@@ -7,6 +7,9 @@ export default function Home() {
           <h1 id="hero-title">
             Never get your account stolen again. There&apos;s no account to steal.
           </h1>
+          <p className="tagline">
+            Meet your <strong>disposable identity for anti-scam shopping.</strong>
+          </p>
         </div>
 
         <a className="scroll-cue" href="#waitlist" aria-label="Swipe down for demo">
