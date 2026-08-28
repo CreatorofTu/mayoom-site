@@ -5,9 +5,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">MAYOOM</p>
           <h1 id="hero-title">
-            Never get your account stolen again.
-            <br />
-            There&apos;s no account to steal.
+            Never get your account stolen again. There&apos;s no account to steal.
           </h1>
         </div>
 
