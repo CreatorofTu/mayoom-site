@@ -18,12 +18,14 @@ export default function Home() {
         <div className="hero-inner">
           <div className="logo-stage" aria-label="Mayoom">
             <img className="logo-wordmark" src="/mayoom-wordmark.svg" alt="" />
-            <img className="logo-mark" src="/mayoom-mark.svg" alt="" />
+            <img className="blink-frame blink-open" src="/mayoom-blink-open.svg" alt="" />
+            <img className="blink-frame blink-mid" src="/mayoom-blink-mid.svg" alt="" />
+            <img className="blink-frame blink-closed" src="/mayoom-blink-closed.svg" alt="" />
           </div>
 
           <div className="hero-copy">
             <h1 id="hero-title">
-              Never get your account stolen again. There&apos;s no account to steal.
+              Who&apos;s going to tell him there&apos;s nothing to steal?
             </h1>
             <p className="tagline">
               Meet your <strong>disposable identity for anti-scam shopping.</strong>
