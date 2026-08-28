@@ -34,7 +34,6 @@ export default function Home() {
     let travel = 1;
     let startLeft = 0;
     let startTop = 0;
-    let startDocumentTop = 0;
     let startWidth = 1;
 
     const clamp = (value: number) => Math.min(1, Math.max(0, value));
@@ -46,37 +45,37 @@ export default function Home() {
     const update = () => {
       frame = 0;
       const progress = clamp((window.scrollY - heroTop) / travel);
-      const move = smooth(0.04, 0.76, progress);
+      const move = smooth(0.02, 0.48, progress);
       const mobile = window.innerWidth < 640;
-      const targetMarkWidth = mobile ? 76 : 104;
+      const targetMarkWidth = mobile ? 72 : 92;
       const markWidthShare = 0.52201;
       const markLeftShare = 0.31052;
       const targetScale = Math.min(0.46, Math.max(0.12, targetMarkWidth / (startWidth * markWidthShare)));
-      const targetLeft = (mobile ? 16 : 24) - startWidth * markLeftShare * targetScale;
-      const targetTop = mobile ? 16 : 22;
+      const cornerInset = mobile ? 16 : 24;
+      const targetLeft = window.innerWidth - cornerInset - startWidth * (markLeftShare + markWidthShare) * targetScale;
+      const targetTop = mobile ? 16 : 20;
       const desiredLeft = startLeft + (targetLeft - startLeft) * move;
       const desiredTop = startTop + (targetTop - startTop) * move;
-      const baseTop = startDocumentTop - window.scrollY;
       const scale = 1 + (targetScale - 1) * move;
 
-      logo.style.transform = `translate3d(${desiredLeft - startLeft}px, ${desiredTop - baseTop}px, 0) scale(${scale})`;
-      logo.style.opacity = String(1 - smooth(0.82, 1, progress));
+      logo.style.transform = `translate3d(${desiredLeft - startLeft}px, ${desiredTop - startTop}px, 0) scale(${scale})`;
+      logo.style.opacity = String(1 - smooth(0.94, 1, progress));
 
       if (progress > 0.01) activated = true;
       if (activated) {
         wordmark.style.animation = 'none';
         wordmark.style.clipPath = 'inset(0)';
         wordmark.style.transform = 'none';
-        wordmark.style.opacity = String(1 - smooth(0.12, 0.52, progress));
+        wordmark.style.opacity = String(1 - smooth(0.06, 0.3, progress));
         openMark.style.animation = 'none';
         openMark.style.opacity = '1';
         closedMark.style.animation = 'none';
         closedMark.style.opacity = '0';
       }
 
-      copy.style.opacity = String(1 - smooth(0.05, 0.42, progress));
-      copy.style.transform = `translateY(${-18 * smooth(0.05, 0.42, progress)}px)`;
-      cue.style.opacity = String(1 - smooth(0, 0.2, progress));
+      copy.style.opacity = String(1 - smooth(0.02, 0.26, progress));
+      copy.style.transform = `translateY(${-18 * smooth(0.02, 0.26, progress)}px)`;
+      cue.style.opacity = String(1 - smooth(0, 0.14, progress));
       video.style.opacity = String(1 - smooth(0.68, 1, progress));
       hero.style.opacity = String(1 - smooth(0.9, 1, progress));
     };
@@ -91,7 +90,6 @@ export default function Home() {
       travel = Math.max(1, transition.offsetHeight - window.innerHeight);
       startLeft = rect.left;
       startTop = rect.top + window.scrollY - heroTop;
-      startDocumentTop = rect.top + window.scrollY;
       startWidth = rect.width;
       requestUpdate();
     };

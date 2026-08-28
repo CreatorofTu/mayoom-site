@@ -92,7 +92,7 @@ a { color: inherit; }
   width: 100%;
   opacity: 0;
   transform-origin: 50% 75%;
-  animation: wordmark-rise 4.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: wordmark-rise 1.55s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .blink-frame {
@@ -104,8 +104,8 @@ a { color: inherit; }
   transform-origin: 52% 63%;
 }
 
-.blink-open { animation: blink-open 2.8s ease-in-out both; }
-.blink-closed { animation: blink-closed 2.8s ease-in-out both; }
+.blink-open { animation: blink-open 1s ease-in-out both; }
+.blink-closed { animation: blink-closed 1s ease-in-out both; }
 
 h1 {
   margin: 0;
