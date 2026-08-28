@@ -2,6 +2,19 @@ export default function Home() {
   return (
     <main>
       <section className="hero" aria-labelledby="hero-title">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="/mayoom-background.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-video-overlay" aria-hidden="true" />
+
         <div className="hero-inner">
           <div className="logo-stage" aria-label="Mayoom">
             <img className="logo-wordmark" src="/mayoom-wordmark.svg" alt="" />
