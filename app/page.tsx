@@ -118,7 +118,7 @@ export default function Home() {
           <div className="landing-intro" aria-label="Usernames and passwords disappear. Mayoom remains.">
             <div className="intro-stage">
               <div className="watchers" aria-hidden="true">
-                {['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8'].map((position) => (
+                {Array.from({ length: 18 }, (_, index) => `w${index + 1}`).map((position) => (
                   <span className={`watcher ${position}`} key={position}><i /><i /></span>
                 ))}
               </div>
