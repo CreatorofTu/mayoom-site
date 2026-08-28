@@ -83,6 +83,7 @@ a { color: inherit; }
 
 .logo-wordmark {
   inset: 0 auto auto 0;
+  z-index: 2;
   width: 100%;
   opacity: 0;
   transform-origin: 50% 75%;
@@ -92,13 +93,14 @@ a { color: inherit; }
 .blink-frame {
   top: 0;
   left: 31.052%;
+  z-index: 1;
   width: 52.201%;
   opacity: 0;
   transform-origin: 52% 63%;
 }
 
-.blink-open { animation: blink-open 2.8s ease-in-out infinite; }
-.blink-closed { animation: blink-closed 2.8s ease-in-out infinite; }
+.blink-open { animation: blink-open 2.8s ease-in-out both; }
+.blink-closed { animation: blink-closed 2.8s ease-in-out both; }
 
 h1 {
   margin: 0;
