@@ -13,7 +13,6 @@ export default function Home() {
         >
           <source src="/mayoom-background.mp4" type="video/mp4" />
         </video>
-        <div className="hero-video-overlay" aria-hidden="true" />
 
         <div className="hero-inner">
           <div className="logo-stage" aria-label="Mayoom">
