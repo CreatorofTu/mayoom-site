@@ -32,9 +32,6 @@ export default function Home() {
     let activated = false;
     let heroTop = 0;
     let travel = 1;
-    let startLeft = 0;
-    let startTop = 0;
-    let startWidth = 1;
 
     const clamp = (value: number) => Math.min(1, Math.max(0, value));
     const smooth = (from: number, to: number, value: number) => {
@@ -45,20 +42,7 @@ export default function Home() {
     const update = () => {
       frame = 0;
       const progress = clamp((window.scrollY - heroTop) / travel);
-      const move = smooth(0.02, 0.48, progress);
-      const mobile = window.innerWidth < 640;
-      const targetMarkWidth = mobile ? 72 : 92;
-      const markWidthShare = 0.52201;
-      const markLeftShare = 0.31052;
-      const targetScale = Math.min(0.46, Math.max(0.12, targetMarkWidth / (startWidth * markWidthShare)));
-      const cornerInset = mobile ? 16 : 24;
-      const targetLeft = window.innerWidth - cornerInset - startWidth * (markLeftShare + markWidthShare) * targetScale;
-      const targetTop = mobile ? 16 : 20;
-      const desiredLeft = startLeft + (targetLeft - startLeft) * move;
-      const desiredTop = startTop + (targetTop - startTop) * move;
-      const scale = 1 + (targetScale - 1) * move;
-
-      logo.style.transform = `translate3d(${desiredLeft - startLeft}px, ${desiredTop - startTop}px, 0) scale(${scale})`;
+      logo.style.transform = 'none';
       logo.style.opacity = String(1 - smooth(0.94, 1, progress));
 
       if (progress > 0.01) activated = true;
@@ -85,17 +69,12 @@ export default function Home() {
     };
 
     const measure = () => {
-      const rect = logo.getBoundingClientRect();
       heroTop = transition.getBoundingClientRect().top + window.scrollY;
       travel = Math.max(1, transition.offsetHeight - window.innerHeight);
-      startLeft = rect.left;
-      startTop = rect.top + window.scrollY - heroTop;
-      startWidth = rect.width;
       requestUpdate();
     };
 
     const resize = () => {
-      logo.style.transform = 'none';
       window.requestAnimationFrame(measure);
     };
 
@@ -134,24 +113,55 @@ export default function Home() {
           >
             <source src="/mayoom-background.mp4" type="video/mp4" />
           </video>
+          <div className="video-curtain" aria-hidden="true" />
 
           <div className="landing-intro" aria-label="Usernames and passwords disappear. Mayoom remains.">
-            <div className="delete-x" aria-hidden="true">×</div>
-            <div className="delete-control" aria-hidden="true">Delete identity</div>
-            <div className="login-ui">
-              <label className="demo-field username-field">
-                <span>Username</span>
-                <input value="shopper@email.com" readOnly tabIndex={-1} />
-              </label>
-              <label className="demo-field password-field">
-                <span>Password</span>
-                <input value="••••••••••••" readOnly tabIndex={-1} />
-              </label>
-              <button className="demo-button" type="button" tabIndex={-1}>Sign up</button>
-            </div>
-            <div className="private-state">
-              <img src="/mayoom-blink-open.svg" alt="" />
-              <p>shop privately with mayoom.</p>
+            <div className="intro-stage">
+              <div className="watchers" aria-hidden="true">
+                {['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8'].map((position) => (
+                  <span className={`watcher ${position}`} key={position}><i /><i /></span>
+                ))}
+              </div>
+
+              <div className="intro-form">
+                <div className="intro-heading">
+                  <span>Create account</span>
+                  <h2>Start shopping</h2>
+                  <p>Use an email and password to continue.</p>
+                </div>
+                <div className="intro-fields">
+                  <label className="sim-field username-field">
+                    <span>Username</span>
+                    <input readOnly tabIndex={-1} aria-label="Username" />
+                    <b className="typed-value typed-email">shopper@email.com</b>
+                    <i className="typing-caret email-caret" aria-hidden="true" />
+                    <button className="field-x username-x" type="button" tabIndex={-1} aria-label="Delete username">×</button>
+                  </label>
+                  <label className="sim-field password-field">
+                    <span>Password</span>
+                    <input readOnly tabIndex={-1} aria-label="Password" />
+                    <b className="typed-value typed-password">••••••••••••</b>
+                    <i className="typing-caret password-caret" aria-hidden="true" />
+                    <button className="field-x password-x" type="button" tabIndex={-1} aria-label="Delete password">×</button>
+                  </label>
+                </div>
+                <button className="demo-button" type="button" tabIndex={-1}>
+                  <span>Sign up</span>
+                  <i aria-hidden="true">→</i>
+                </button>
+              </div>
+
+              <div className="fake-cursor" aria-hidden="true">
+                <span className="cursor-question">?</span>
+                <span className="cursor-arrow" />
+                <span className="click-ring" />
+              </div>
+
+              <div className="private-state">
+                <div className="logo-rise-mask"><img src="/mayoom-blink-open.svg" alt="" /></div>
+                <p>Shop with no identity.</p>
+                <span>Swipe down for your disposable identity for anti-scam shopping</span>
+              </div>
             </div>
           </div>
 
