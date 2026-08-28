@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { type FormEvent, useEffect, useRef } from 'react';
 
 export default function Home() {
   const transitionRef = useRef<HTMLElement>(null);
@@ -110,6 +110,14 @@ export default function Home() {
     };
   }, []);
 
+  const handleWaitlistSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = String(data.get('email') ?? '').trim();
+    if (!email) return;
+    window.location.href = `mailto:hello@mayoom.com?subject=${encodeURIComponent('Join the Mayoom waitlist')}&body=${encodeURIComponent(`Please add ${email} to the Mayoom waitlist.`)}`;
+  };
+
   return (
     <main>
       <section className="hero-transition" ref={transitionRef} aria-labelledby="hero-title">
@@ -127,6 +135,26 @@ export default function Home() {
             <source src="/mayoom-background.mp4" type="video/mp4" />
           </video>
 
+          <div className="landing-intro" aria-label="Usernames and passwords disappear. Mayoom remains.">
+            <div className="delete-x" aria-hidden="true">×</div>
+            <div className="delete-control" aria-hidden="true">Delete identity</div>
+            <div className="login-ui">
+              <label className="demo-field username-field">
+                <span>Username</span>
+                <input value="shopper@email.com" readOnly tabIndex={-1} />
+              </label>
+              <label className="demo-field password-field">
+                <span>Password</span>
+                <input value="••••••••••••" readOnly tabIndex={-1} />
+              </label>
+              <button className="demo-button" type="button" tabIndex={-1}>Sign up</button>
+            </div>
+            <div className="private-state">
+              <img src="/mayoom-blink-open.svg" alt="" />
+              <p>shop privately with mayoom.</p>
+            </div>
+          </div>
+
           <div className="hero-inner">
             <div className="logo-stage" ref={logoRef} aria-label="Mayoom">
               <img ref={wordmarkRef} className="logo-wordmark" src="/mayoom-text-logo.svg" alt="" />
@@ -142,7 +170,7 @@ export default function Home() {
           <a
             ref={cueRef}
             className="scroll-cue"
-            href="#waitlist"
+            href="#information"
             aria-label="Swipe down for your disposable identity for anti-scam shopping"
           >
             <span>Swipe down for your disposable identity for anti-scam shopping</span>
@@ -151,12 +179,77 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="waitlist" id="waitlist" aria-labelledby="waitlist-title">
-        <h2 id="waitlist-title">Join free waitlist</h2>
-        <a className="waitlist-button" href="mailto:hello@mayoom.com?subject=Join%20the%20Mayoom%20waitlist">
-          Join free waitlist
-        </a>
-      </section>
+      <div className="information-page" id="information">
+        <section className="info-section section-one" aria-labelledby="section-one-title">
+          <div className="section-copy">
+            <p className="section-number">01</p>
+            <h2 id="section-one-title">Detach your points, orders, and rewards.</h2>
+
+            <div className="prose">
+              <p>Your favorite stores keep your shopping life behind the same identity for years.</p>
+              <p className="short-lines">Your email.<br />Your password.<br />Your orders.<br />Your points.<br />Your rewards.</p>
+              <p><strong>Mayoom separates what you own from the identity used to access it.</strong></p>
+              <p>Your points, orders, and rewards can stay.</p>
+              <p><strong>Your shopping identity can be disposed of and replaced.</strong></p>
+              <p>So when an old identity gets stolen, there’s less waiting behind it for a scammer.</p>
+              <p className="positioning-line"><strong>Your value stays. Your identity doesn’t.</strong></p>
+            </div>
+          </div>
+
+        </section>
+
+        <section className="info-section section-two" aria-labelledby="section-two-title">
+          <div className="section-copy">
+            <p className="section-number">02</p>
+            <h2 id="section-two-title">We can’t get back $15.9 billion in losses. But we can prevent the next scam.</h2>
+            <p className="stat-line">Americans reported losing <strong>$15.9 billion to fraud in 2025.</strong></p>
+
+            <div className="prose">
+              <p>Scammers keep getting better at stealing the information we leave behind.</p>
+              <p>So we’re changing what gets left behind.</p>
+              <p>With Mayoom, stores can give every legitimate purchase a temporary identity and record the intent behind changes to your points, rewards, and orders.</p>
+              <p>If value moves without a legitimate reason: <strong>something’s wrong.</strong></p>
+              <p>Instead of only asking: <em>Does this look like a scam?</em></p>
+              <p>Mayoom can help stores ask: <strong>Was this ever authorized at all?</strong></p>
+            </div>
+          </div>
+
+          <div className="intent-demo" aria-label="Comparison between customer intent and store records">
+            <div className="intent-heading"><span>Customer intent</span><span>Store record</span></div>
+            <div className="intent-row"><span>+ 200 points</span><span>+ 200 <b aria-label="matches">✓</b></span></div>
+            <div className="intent-row"><span>− 500 points</span><span>− 500 <b aria-label="matches">✓</b></span></div>
+            <div className="intent-row alert-row"><span>no transaction</span><span>− 2,000 <b aria-label="unexplained">!</b></span></div>
+            <p>If value moves, there should be a reason.</p>
+          </div>
+        </section>
+
+        <section className="info-section section-three" aria-labelledby="section-three-title">
+          <div className="section-copy">
+            <p className="section-number">03</p>
+            <h2 id="section-three-title">Restoring trust and privacy to your favorite stores.</h2>
+
+            <div className="prose">
+              <p>You shouldn’t have to choose between enjoying a store and trusting it with a permanent copy of your shopping identity.</p>
+              <p>Mayoom works with stores to maintain their anti-scam layer on their behalf.</p>
+              <p className="short-lines">Less permanent identity.<br />Less reusable access.<br />Less customer information worth stealing.</p>
+              <p>While your favorite stores can still remember what matters:</p>
+              <p><strong>your points, your purchases, your rewards, and what they owe you.</strong></p>
+            </div>
+          </div>
+        </section>
+
+        <footer className="waitlist-cta" aria-labelledby="waitlist-title">
+          <p className="locked-positioning">Disposable identity for anti-scam shopping.</p>
+          <h2 id="waitlist-title">Join the free waitlist</h2>
+          <form className="waitlist-form" onSubmit={handleWaitlistSubmit}>
+            <label htmlFor="waitlist-email">Email</label>
+            <div className="form-row">
+              <input id="waitlist-email" name="email" type="email" autoComplete="email" placeholder="you@email.com" required />
+              <button type="submit">Join free waitlist</button>
+            </div>
+          </form>
+        </footer>
+      </div>
     </main>
   );
 }
