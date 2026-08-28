@@ -44,6 +44,7 @@ a { color: inherit; }
 }
 
 .hero-video {
+  filter: brightness(1.22) contrast(0.94);
   object-fit: cover;
   object-position: center;
 }
