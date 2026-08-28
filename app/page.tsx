@@ -129,7 +129,7 @@ export default function Home() {
 
           <div className="hero-inner">
             <div className="logo-stage" ref={logoRef} aria-label="Mayoom">
-              <img ref={wordmarkRef} className="logo-wordmark" src="/mayoom-wordmark.svg" alt="" />
+              <img ref={wordmarkRef} className="logo-wordmark" src="/mayoom-text-logo.svg" alt="" />
               <img ref={openMarkRef} className="blink-frame blink-open" src="/mayoom-blink-open.svg" alt="" />
               <img ref={closedMarkRef} className="blink-frame blink-closed" src="/mayoom-blink-closed.svg" alt="" />
             </div>
