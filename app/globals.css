@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: light;
+  --black: #050505;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-outfit), Arial, sans-serif;
+}
+
+a { color: inherit; }
+
+.hero,
+.waitlist {
+  min-height: 100svh;
+  scroll-snap-align: start;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 8vw;
+  text-align: center;
+}
+
+.hero-copy { max-width: 1120px; }
+
+.eyebrow {
+  margin: 0 0 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.9rem, 7.4vw, 7.8rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: max(2rem, env(safe-area-inset-bottom));
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.arrow {
+  font-size: 1.35rem;
+  animation: drift 1.8s ease-in-out infinite;
+}
+
+.waitlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 8vw;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(2.7rem, 6vw, 6.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.waitlist-button {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--black);
+  border-radius: 999px;
+  background: var(--black);
+  color: var(--white);
+  padding: 0.95rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.waitlist-button:hover,
+.waitlist-button:focus-visible {
+  background: var(--white);
+  color: var(--black);
+}
+
+.waitlist-button:focus-visible,
+.scroll-cue:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 4px;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.45rem); }
+}
+
+@media (max-width: 640px) {
+  .hero,
+  .waitlist { padding-inline: 1.25rem; }
+
+  h1 { font-size: clamp(3rem, 14.5vw, 5rem); }
+  h1 br { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .arrow { animation: none; }
+}
