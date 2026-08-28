@@ -2,14 +2,20 @@ export default function Home() {
   return (
     <main>
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-copy">
-          <p className="eyebrow">MAYOOM</p>
-          <h1 id="hero-title">
-            Never get your account stolen again. There&apos;s no account to steal.
-          </h1>
-          <p className="tagline">
-            Meet your <strong>disposable identity for anti-scam shopping.</strong>
-          </p>
+        <div className="hero-inner">
+          <div className="logo-stage" aria-label="Mayoom">
+            <img className="logo-wordmark" src="/mayoom-wordmark.svg" alt="" />
+            <img className="logo-mark" src="/mayoom-mark.svg" alt="" />
+          </div>
+
+          <div className="hero-copy">
+            <h1 id="hero-title">
+              Never get your account stolen again. There&apos;s no account to steal.
+            </h1>
+            <p className="tagline">
+              Meet your <strong>disposable identity for anti-scam shopping.</strong>
+            </p>
+          </div>
         </div>
 
         <a className="scroll-cue" href="#waitlist" aria-label="Swipe down for demo">
