@@ -19,7 +19,6 @@ export default function Home() {
           <div className="logo-stage" aria-label="Mayoom">
             <img className="logo-wordmark" src="/mayoom-wordmark.svg" alt="" />
             <img className="blink-frame blink-open" src="/mayoom-blink-open.svg" alt="" />
-            <img className="blink-frame blink-mid" src="/mayoom-blink-mid.svg" alt="" />
             <img className="blink-frame blink-closed" src="/mayoom-blink-closed.svg" alt="" />
           </div>
 
@@ -27,14 +26,11 @@ export default function Home() {
             <h1 id="hero-title">
               Who&apos;s going to tell him there&apos;s nothing to steal?
             </h1>
-            <p className="tagline">
-              Meet your <strong>disposable identity for anti-scam shopping.</strong>
-            </p>
           </div>
         </div>
 
-        <a className="scroll-cue" href="#waitlist" aria-label="Swipe down for demo">
-          <span>Swipe down for demo</span>
+        <a className="scroll-cue" href="#waitlist" aria-label="Swipe down for your disposable identity for anti-scam shopping">
+          <span>Swipe down for your disposable identity for anti-scam shopping</span>
           <span className="arrow" aria-hidden="true">↓</span>
         </a>
       </section>
