@@ -85,9 +85,9 @@ a { color: inherit; }
 
 .logo-stage {
   position: absolute;
-  top: clamp(1.15rem, 3vw, 2.5rem);
-  left: clamp(1.15rem, 3vw, 2.5rem);
-  width: min(19rem, 38vw);
+  top: clamp(1.25rem, 2.2vw, 2rem);
+  left: clamp(1.25rem, 2.2vw, 2rem);
+  width: clamp(7.25rem, 8vw, 9rem);
   aspect-ratio: 2295 / 810;
   transform-origin: top left;
   will-change: transform, opacity;
@@ -826,7 +826,7 @@ h1 {
   .logo-stage {
     top: max(1rem, env(safe-area-inset-top));
     left: 1rem;
-    width: min(14rem, 58vw);
+    width: 7.5rem;
   }
 
   .landing-intro { padding-inline: 1.1rem; }
